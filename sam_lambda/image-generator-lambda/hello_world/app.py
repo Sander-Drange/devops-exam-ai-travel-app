@@ -10,17 +10,17 @@ s3_client = boto3.client("s3")
 
 def lambda_handler(event, context):
     try:
-        # Get the bucket name
+        # Get the bucket name from environment variable
         bucket_name = "pgr301-couch-explorers"
         
         # Get prompt from the POST request body
         body = json.loads(event['body']) if event.get('body') else {}
         prompt = body.get('prompt', "Investors, with circus hats, giving money to developers with large smiles")
         
-        # Generate random seed and set up model
+        # Generate random seed and set up model with kandidatnummer prefix
         model_id = "amazon.titan-image-generator-v1"
         seed = random.randint(0, 2147483647)
-        s3_image_path = f"generated_images/titan_{seed}.png"
+        s3_image_path = f"50/generated_images/titan_{seed}.png"  # Lagt til kandidatnummer '50'
 
         # Create the request
         native_request = {
@@ -40,7 +40,7 @@ def lambda_handler(event, context):
         response = bedrock_client.invoke_model(modelId=model_id, body=json.dumps(native_request))
         model_response = json.loads(response["body"].read())
 
-        # Extract and decode the Base64 image data
+        # Extract and decode the image data
         base64_image_data = model_response["images"][0]
         image_data = base64.b64decode(base64_image_data)
 
@@ -52,7 +52,7 @@ def lambda_handler(event, context):
             ContentType='image/png'
         )
 
-        # Return success response
+        # Return successfull response
         return {
             'statusCode': 200,
             'body': json.dumps({

@@ -5,6 +5,10 @@
 ### Implementert Løsning
 Lambda-funksjon integrert med AWS Bedrock for å generere reisebilder basert på tekstbeskrivelser.
 
+### Implementasjonsdetaljer
+- Kandidatnummer: 50
+- Bildesti format: `s3://pgr301-couch-explorers/50/generated_images/titan_{seed}.png`
+
 #### Hovedfunksjoner:
 - POST-endepunkt som mottar bildebeskrivelser
 - Genererer bilder via AWS Bedrock Titan AI
@@ -36,13 +40,13 @@ curl -X POST \
   }'
 ```
 
-3. **Norsk Fjordlandskap**
+3. **Windows backgrunn**
 ```bash
 curl -X POST \
   https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate \
   -H "Content-Type: application/json" \
   -d '{
-    "prompt": "en solnedgang over fjorden med fjell i bakgrunnen"
+    "prompt": "Grønn eng med blå himmel"
   }'
 ```
 
@@ -67,15 +71,3 @@ sam deploy --guided
 - Stack Name: image-generator-stack
 - Region: eu-west-1
 - S3 Bucket: pgr301-couch-explorers
-
-### Sikkerhet
-- IAM roller konfigurert for minste nødvendige tilgang
-- S3 bucket med sikker lagring
-- API Gateway uten autentisering (som spesifisert)
-
-### Leveranse Oppsummering
-- [x] SAM/Lambda implementert
-- [x] API Gateway konfigurert
-- [x] Bedrock integrasjon fungerende
-- [x] S3 lagring implementert
-- [x] Dokumentasjon fullført
