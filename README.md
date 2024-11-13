@@ -71,3 +71,34 @@ sam deploy --guided
 - Stack Name: image-generator-stack
 - Region: eu-west-1
 - S3 Bucket: pgr301-couch-explorers
+
+
+## Leveranseoversikt
+
+### Oppgave 1 - AWS Lambda og GitHub Actions
+| Krav | Leveranse/Status |
+|------|-----------------|
+| HTTP Endepunkt for Lambda Testing | Postman Collection:
+<br>
+- URL: `https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate`
+<br>- Method: POST<br>- Headers: `Content-Type: application/json`
+<br>- Body: `{"prompt": "your image description"}` |
+
+| S3 Bucket med bilder | `s3://pgr301-couch-explorers/50/generated_images/` |
+| SAM Template | https://github.com/Sander-Drange/devops-exam-ai-travel-app/blob/main/sam_lambda/image-generator-lambda/template.yaml |
+| Kandidatnummer | 50 |
+
+### Testing via Postman
+1. Opprett ny request i Postman:
+   - Method: POST
+   - URL: `https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate`
+
+2. Headers:
+   - Key: `Content-Type`
+   - Value: `application/json`
+
+3. Body (raw JSON):
+```json
+{
+    "prompt": "Norwegian fjord landscape with northern lights"
+}
