@@ -30,17 +30,7 @@ curl -X POST \
   }'
 ```
 
-2. **Safari Opplevelse**
-```bash
-curl -X POST \
-  https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "prompt": "Place me in a jeep on an African savanna with lions and elephants in the background under a golden sunset. Use an analog 1980s photo effect with warm color tones, and give it a grainy texture for an authentic safari experience."
-  }'
-```
-
-3. **Windows backgrunn**
+2. **Windows backgrunn**
 ```bash
 curl -X POST \
   https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate \
@@ -75,18 +65,7 @@ sam deploy --guided
 
 ## Leveranseoversikt
 
-### Oppgave 1 - AWS Lambda og GitHub Actions
-| Krav | Leveranse/Status |
-|------|-----------------|
-| HTTP Endepunkt for Lambda Testing | Postman Collection:
-<br>
-- URL: `https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate`
-<br>- Method: POST<br>- Headers: `Content-Type: application/json`
-<br>- Body: `{"prompt": "your image description"}` |
-
-| S3 Bucket med bilder | `s3://pgr301-couch-explorers/50/generated_images/` |
-| SAM Template | https://github.com/Sander-Drange/devops-exam-ai-travel-app/blob/main/sam_lambda/image-generator-lambda/template.yaml |
-| Kandidatnummer | 50 |
+### Oppgave 1 - AWS Lambda
 
 ### Testing via Postman
 1. Opprett ny request i Postman:
