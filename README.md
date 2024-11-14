@@ -81,6 +81,8 @@ sam deploy --guided
 {
     "prompt": "Norwegian fjord landscape with northern lights"
 }
+```
 
 ### Oppgave 1b - Github Actions Workflow
-https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11843710491 |
+
+https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11843710491
