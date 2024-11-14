@@ -65,7 +65,7 @@ sam deploy --guided
 
 ## Leveranseoversikt
 
-### Oppgave 1 - AWS Lambda
+### Oppgave 1a - AWS Lambda
 
 ### Testing via Postman
 1. Opprett ny request i Postman:
@@ -81,3 +81,6 @@ sam deploy --guided
 {
     "prompt": "Norwegian fjord landscape with northern lights"
 }
+
+### Oppgave 1b - Github Actions Workflow
+https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11843710491 |
