@@ -17,10 +17,10 @@ def lambda_handler(event, context):
         body = json.loads(event['body']) if event.get('body') else {}
         prompt = body.get('prompt', "Investors, with circus hats, giving money to developers with large smiles")
         
-        # Generate random seed and set up model with kandidatnummer prefix
+        # Generate random seed and set up model with prefix
         model_id = "amazon.titan-image-generator-v1"
         seed = random.randint(0, 2147483647)
-        s3_image_path = f"50/generated_images/titan_{seed}.png"  # Added candidate number '50'
+        s3_image_path = f"50/generated_images/titan_{seed}.png"  
 
         # Create request
         native_request = {

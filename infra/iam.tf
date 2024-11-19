@@ -1,7 +1,6 @@
 # IAM Role for Lambda Execution
 resource "aws_iam_role" "lambda_execution_role" {
   name = "lambda_execution_role_50"
-
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -31,24 +30,20 @@ resource "aws_iam_policy" "lambda_access_policy" {
           "sqs:DeleteMessage",
           "sqs:GetQueueAttributes"
         ],
-        Effect = "Allow",
+        Effect   = "Allow",
         Resource = "${aws_sqs_queue.image_queue.arn}"
         #Resource = "arn:aws:sqs:eu-west-1:244530008913:image-generation-queue-50"
       },
       {
         # Permissions for S3
-        Action = [
-          "s3:PutObject"
-        ],
-        Effect = "Allow",
+        Action   = ["s3:PutObject"],
+        Effect   = "Allow",
         Resource = "arn:aws:s3:::pgr301-couch-explorers/50/generated-images-2/*"
       },
       {
         # Permissions for Bedrock
-        Action = [
-          "bedrock:InvokeModel"
-        ],
-        Effect = "Allow",
+        Action   = ["bedrock:InvokeModel"],
+        Effect   = "Allow",
         Resource = "*"
       }
     ]
