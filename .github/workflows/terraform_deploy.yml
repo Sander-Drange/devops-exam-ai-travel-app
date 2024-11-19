@@ -2,10 +2,12 @@ name: Terraform Deploy
 
 on:
   push:
+    branches:
+      - 'main'
+      - 'feature/**'
     paths:
       - 'infra/**'
-    branches:
-      - '**'
+      - '.github/workflows/**'
 
 jobs:
   terraform:
