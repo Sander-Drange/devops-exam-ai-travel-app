@@ -20,9 +20,9 @@ def lambda_handler(event, context):
         # Generate random seed and set up model with kandidatnummer prefix
         model_id = "amazon.titan-image-generator-v1"
         seed = random.randint(0, 2147483647)
-        s3_image_path = f"50/generated_images/titan_{seed}.png"  # Lagt til kandidatnummer '50'
+        s3_image_path = f"50/generated_images/titan_{seed}.png"  # Added candidate number '50'
 
-        # Create the request
+        # Create request
         native_request = {
             "taskType": "TEXT_IMAGE",
             "textToImageParams": {"text": prompt},
@@ -52,7 +52,7 @@ def lambda_handler(event, context):
             ContentType='image/png'
         )
 
-        # Return successfull response
+        # Successfukl response
         return {
             'statusCode': 200,
             'body': json.dumps({
@@ -62,7 +62,7 @@ def lambda_handler(event, context):
         }
     
     except Exception as e:
-        # Return error response
+        # error response
         return {
             'statusCode': 500,
             'body': json.dumps({

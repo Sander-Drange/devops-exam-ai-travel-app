@@ -8,7 +8,7 @@ terraform {
   }
   backend "s3" {
     bucket = "pgr301-2024-terraform-state"
-    key    = "50/terraform.tfstate"  # Bruker kandidatnummer 50
+    key    = "50/terraform.tfstate"  
     region = "eu-west-1"
   }
 }
