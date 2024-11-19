@@ -16,10 +16,4 @@ terraform {
 provider "aws" {
   region = "eu-west-1"
 }
-
-data "archive_file" "lambda_zip" {
-  type        = "zip"
-  source_file = "../lambda_sqs.py"
-  output_path = "lambda_function.zip"
-}
 # Workflow Testing
