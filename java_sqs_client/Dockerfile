@@ -1,8 +1,8 @@
 # Build stage
 FROM maven:3.8.4-openjdk-11-slim AS builder
 WORKDIR /app
-COPY java_sqs_client/pom.xml .
-COPY java_sqs_client/src ./src
+COPY pom.xml .
+COPY src ./src
 RUN mvn package
 
 # Runtime stage
