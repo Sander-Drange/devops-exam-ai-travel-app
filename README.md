@@ -1,43 +1,39 @@
 # DevOps Eksamen - AI Travel App 2024
 
-## Oppgave 1: AWS Lambda og GitHub Actions - AI Bildegenerator
-
-### Implementert Løsning
-Lambda-funksjon integrert med AWS Bedrock for å generere reisebilder basert på tekstbeskrivelser.
-
-### Implementasjonsdetaljer
-- Kandidatnummer: 50
-- Bildesti format: `s3://pgr301-couch-explorers/50/generated_images/titan_{seed}.png`
-
-#### Hovedfunksjoner:
-- POST-endepunkt som mottar bildebeskrivelser
-- Genererer bilder via AWS Bedrock Titan AI
-- Lagrer bilder i S3
-- Returnerer bilde-URL i responsen
-
-### API Informasjon
-**Endepunkt:** `https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate`
+## Kandidatnummer: 50
 
 ## Leveranseoversikt
 
-### Oppgave 1a - AWS Lambda
+### Oppgave 1 - AWS Lambda og GitHub Actions
+#### 1A: Lambda/SAM Implementasjon
+- **HTTP Endepunkt:** `https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate`
+- **S3 Bucket Path:** `s3://pgr301-couch-explorers/50/generated_images/`
+- **SAM Template:** [template.yaml](sam_lambda/image-generator-lambda/template.yaml)
 
-### Testing via Postman
-1. Opprett ny request i Postman:
-   - Method: POST
-   - URL: `https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate`
-
-2. Headers:
-   - Key: `Content-Type`
-   - Value: `application/json`
-
-3. Body (raw JSON):
+Test med Postman:
 ```json
+POST https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate
+Content-Type: application/json
+
 {
-    "prompt": "Norwegian fjord landscape with northern lights"
+    "prompt": "Norwegian mountain landscape with sunset"
 }
 ```
+#### 1B: GitHub Actions for SAM
+- **Workflow Status:** (https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11843710491)
 
-### Oppgave 1b - Github Actions Workflow
+### Oppgave 2 - Terraform og SQS
+#### 2A: Infrastruktur som Kode
+- **lambda_function_name:** "image-processor-50"
+- **sqs_queue_url:**  "https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50"
 
-https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11843710491
+#### 2B: Terraform GitHub Actions
+- **Main Branch Deploy:** [Terraform Apply Workflow](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11913624026)
+- **Feature Branch Plan:** [Terraform Plan Workflow](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11914390470)
+
+## Teknisk Implementasjon
+- Python 3.8 runtime
+- AWS Bedrock Titan AI for bildegenerering
+- SQS for asynkron meldingshåndtering
+- Terraform for infrastruktur
+- GitHub Actions for CI/CD
