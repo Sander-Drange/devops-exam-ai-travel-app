@@ -24,8 +24,8 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        cd java_sqs_client
-        docker build -t sanderdrange/image-generator-client -f java_sqs_client/Dockerfile java_sqs_client
+        docker build -t sanderdrange/image-generator-client:latest
+      working-directory: ./java_sqs_client
 
     - name: Push Docker Image to Docker Hub
       run: |
@@ -34,5 +34,5 @@ jobs:
     - name: Tag Docker Image with Git SHA
       run: |
         IMAGE_TAG=$(echo $GITHUB_SHA | cut -c1-7)
-        docker tag sanderdrange/image-generator-client:latest sanderdrange/image-generator-client:$IMAGE_TAG
+        docker tag sanderdrange/image-generator-client:latest sanderdrange/image-gengierator-client:$IMAGE_TAG
         docker push sanderdrange/image-generator-client:$IMAGE_TAG
