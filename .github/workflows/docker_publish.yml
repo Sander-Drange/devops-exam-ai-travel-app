@@ -23,8 +23,8 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build Docker Image
-      run: |
-        docker build -t sanderdrange/image-generator-client:latest .
+        run: docker build -t sanderdrange/image-generator-client -f devops-exam-ai-travel-app/java_sqs_client/Dockerfile .
+
 
     - name: Push Docker Image to Docker Hub
       run: |
