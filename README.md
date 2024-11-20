@@ -31,6 +31,23 @@ Content-Type: application/json
 - **Main Branch Deploy:** [Terraform Apply Workflow](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11913624026)
 - **Feature Branch Plan:** [Terraform Plan Workflow](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11914390470)
 
+#### 3A: Docker-image for Java SQS-klient
+
+- **Container Image**: `sanderdrange/image-generator-client`
+- **SQS URL**: "https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50"
+
+For å kjøre containeren og sende en melding til SQS-køen, bruk følgende kommando:
+
+```
+docker run -e AWS_ACCESS_KEY_ID=AKIATR3Y72NI2GBZ3TUX \
+>   -e AWS_SECRET_ACCESS_KEY=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 \
+>   -e SQS_QUEUE_URL=https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50 \
+>   image-generator-client "Me on top of K2"
+```
+
+Validering ble gjort ved å kjøre containeren og sende meldinger til SQS-køen. Jeg observerte CloudWatch-metrikker for å bekrefte at meldinger ble sendt, mottatt og slettet som forventet. I tillegg ble generert innhold lagret i S3, noe som bekrefter at prosessen fra melding til output fungerte som tiltenkt.
+
+
 ## Teknisk Implementasjon
 - Python 3.8 runtime
 - AWS Bedrock Titan AI for bildegenerering
