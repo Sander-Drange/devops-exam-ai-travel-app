@@ -57,8 +57,8 @@ GitHub Actions workflowen bygger og publiserer Docker-imaget til Docker Hub hver
 #### 4A: CloudWatch Alarmer
 - **SQS Queue Alarm:** Implementert CloudWatch alarm for ApproximateAgeOfOldestMessage
 - **Konfigurasjon:** 
-  - Terskel: 5 minutter
-  - Evaluering: Hver 5. minutt
+  - Terskel: 1 minutt
+  - Evaluering: Hvert minutt
   - Alarm Action: SNS Topic med epost-varsling
 - **Teststatus:** ✅ Alarm verifisert og testet
 
