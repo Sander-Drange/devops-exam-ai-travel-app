@@ -82,25 +82,25 @@ GitHub Actions workflowen bygger og publiserer Docker-imaget til Docker Hub hver
 
 #### 5 Serverless vs. Mikrotjenester fra DevOps Perspektiv
 
-# Automatisering og CI/CD
+Automatisering og CI/CD
 
 For automatisering og CI/CD er serverless enklere å håndtere siden AWS tar seg av mye av infrastrukturen. Dette gjør at CI/CD-prosessene kan fokusere mer på koden selv, uten å måtte tenke på serveroppsett. 
 Deployments går raskere fordi man slipper å bygge containere, selv om testing kan bli litt mer utfordrende når man må emulere skytjenester lokalt. 
 Mikrotjenester krever mer oppsett, men gir bedre kontroll over hele teknologistakken, enklere lokaltesting og muligheten til å lage mer komplekse deploy-pipelines.
 
-# Observability
+Observability
 
 Når det gjelder observability, har serverless en fordel ved at CloudWatch logger alt automatisk og at metrics er tilgjengelige direkte. 
 Dette gjør det naturligvis lett å overvåke systemet, men det kan være vanskeligere å feilsøke problemer som går på tvers av flere funksjoner. 
 Mikrotjenester gir full kontroll over logging og gjør det enklere å følge forespørsler gjennom hele systemet. Dette betyr dog at man må sette opp egen logging-infrastruktur og bruke mer tid på vedlikehold.
 
-# Skalerbarhet og Kostnader
+Skalerbarhet og Kostnader
 
 Skalerbarhet og kostnader er også viktige punkter. Med serverless betaler man kun for det som brukes, og skaleringen skjer automatisk. 
 Dette kan være kostnadseffektivt, men ved høy trafikk kan kostnadene bli høye, og cold starts kan oppstå ved lav trafikk. 
 Mikrotjenester gir forutsigbare kostnader og ingen cold starts, men skaleringsprosessen må håndteres manuelt, og man betaler også selv når trafikken er lav. Noe som er drit når enn har vært i en periode der alle østlendingene skal på hytta i påsken og en må krympe seksveisfeltet ut av Oslo.
 
-# Eierskap og Ansvar
+Eierskap og Ansvar
 
 Når det gjelder eierskap og ansvar, flytter serverless mye av ansvaret til AWS. 
 Dette betyr mindre servervedlikehold og mer fokus på forretningslogikk, men det gir mindre kontroll over ytelsen og skaper avhengighet av AWS-tjenester. 
@@ -109,7 +109,7 @@ Samtidig betyr det at utviklerne har større ansvar for å vedlikeholde og optim
 Dette øker ansvaret til systemutviklerne, da de må sørge for at koden er effektiv, skalerbar og feilfri, noe som kan være utfordrende uten samme grad av kontroll over infrastrukturen som ved mikrotjenester, men enn tjener på det med å få muligheten til å lære av uoptimalisert kode. 
 Mikrotjenester gir full kontroll over teknologistakken og muligheten til å optimalisere alt, men dette kommer med økt ansvar for drift og krever mer DevOps-kompetanse.
 
-# Praktisk Erfaring fra Eksamen
+Praktisk Erfaring fra Eksamen
 
 Under eksamen ble det tydelig hvordan serverless fungerer i praksis. 
 Ved bruk av AWS Lambda for bildegenerering kunne funksjoner enkelt settes opp for automatisk bildebehandling når bilder ble lastet opp. 
