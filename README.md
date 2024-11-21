@@ -54,9 +54,28 @@ Validering ble gjort ved å kjøre containeren og sende meldinger til SQS-køen.
 
 GitHub Actions workflowen bygger og publiserer Docker-imaget til Docker Hub hver gang det er en push til main-branchen. Dette sikrer at teamet alltid har tilgang til den nyeste versjonen av klienten.
 
+#### 4A: CloudWatch Alarmer
+- **SQS Queue Alarm:** Implementert CloudWatch alarm for ApproximateAgeOfOldestMessage
+- **Konfigurasjon:** 
+  - Terskel: 5 minutter
+  - Evaluering: Hver 5. minutt
+  - Alarm Action: SNS Topic med epost-varsling
+- **Teststatus:** ✅ Alarm verifisert og testet
+
+#### 4B: Metrics for Responstid
+- **Lambda Duration Metrics:** Implementert p95 percentil måling
+- **Histogram Konfigurasjon:**
+  - Måler prosesseringstid for bildegenerering
+  - Terskel: 10 sekunder
+  - Rapporteringsintervall: 60 sekunder
+- **Teststatus:** ✅ Metrics verifisert med test-meldinger
+
 ## Teknisk Implementasjon
 - Python 3.8 runtime
 - AWS Bedrock Titan AI for bildegenerering
 - SQS for asynkron meldingshåndtering
 - Terraform for infrastruktur
 - GitHub Actions for CI/CD
+- Terraform-basert infrastruktur for alarmer og metrics
+- SNS Topic for varsling: `sqs-message-age-alarm-topic-50`
+- CloudWatch Dashboard tilgjengelig for visualisering
