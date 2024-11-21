@@ -60,7 +60,7 @@ GitHub Actions workflowen bygger og publiserer Docker-imaget til Docker Hub hver
   - Terskel: 1 minutt
   - Evaluering: Hvert minutt
   - Alarm Action: SNS Topic med epost-varsling
-- **Teststatus:** ✅ Alarm verifisert og testet
+- **Teststatus:** Alarm verifisert og testet
 
 #### 4B: Metrics for Responstid
 - **Lambda Duration Metrics:** Implementert p95 percentil måling
@@ -68,7 +68,7 @@ GitHub Actions workflowen bygger og publiserer Docker-imaget til Docker Hub hver
   - Måler prosesseringstid for bildegenerering
   - Terskel: 10 sekunder
   - Rapporteringsintervall: 60 sekunder
-- **Teststatus:** ✅ Metrics verifisert med test-meldinger
+- **Teststatus:** Metrics verifisert med test-meldinger
 
 ## Teknisk Implementasjon
 - Python 3.8 runtime
