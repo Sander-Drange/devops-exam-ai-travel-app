@@ -47,6 +47,12 @@ docker run -e AWS_ACCESS_KEY_ID=AKIATR3Y72NI2GBZ3TUX \
 
 Validering ble gjort ved å kjøre containeren og sende meldinger til SQS-køen. Jeg observerte CloudWatch-metrikker for å bekrefte at meldinger ble sendt, mottatt og slettet som forventet. I tillegg ble generert innhold lagret i S3, noe som bekrefter at prosessen fra melding til output fungerte som tiltenkt.
 
+#### 3B: GitHub Actions for Docker Image Publisering
+- **Workflow-fil:** [docker_publish.yml] lenke til action: https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11936539593
+- **Beskrivelse av Taggestrategi:** 
+  - Jeg har valgt å tagge Docker imaget med `latest` for den nyeste stabile versjonen, samt en Git SHA tag for å kunne referere til spesifikke commits. Dette gir en enkel måte å alltid hente den nyeste versjonen, samtidig som man kan spore og rulle tilbake til tidligere versjoner om nødvendig.
+
+GitHub Actions workflowen bygger og publiserer Docker-imaget til Docker Hub hver gang det er en push til main-branchen. Dette sikrer at teamet alltid har tilgang til den nyeste versjonen av klienten.
 
 ## Teknisk Implementasjon
 - Python 3.8 runtime
