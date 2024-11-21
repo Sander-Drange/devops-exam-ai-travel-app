@@ -11,7 +11,7 @@
 - **SAM Template:** [template.yaml](sam_lambda/image-generator-lambda/template.yaml)
 
 Test med Postman:
-```json
+```
 POST https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate
 Content-Type: application/json
 
