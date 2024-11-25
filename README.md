@@ -27,7 +27,8 @@ Kandidatnummer: 50
 - Lambda Duration p95 percentil måling konfigurert
 - Varsling: Endre `alarm_email` i variables.tf for notifikasjoner
 
-#### 5 Serverless vs. Mikrotjenester fra DevOps Perspektiv
+## Oppgave 5 
+### Serverless vs. Mikrotjenester fra DevOps Perspektiv
 
 Automatisering og CI/CD
 
