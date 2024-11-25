@@ -1,84 +1,33 @@
 # DevOps Eksamen - AI Travel App 2024
 
-## Kandidatnummer: 50
+# Leveranseoversikt - DevOps Eksamen 2024
+Kandidatnummer: 50
 
-## Leveranseoversikt
+## Oppgave 1
+### HTTP Endepunkt (1A)
+- `https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate`
+{ "prompt": "Norwegian mountain landscape with sunset" }
 
-### Oppgave 1 - AWS Lambda og GitHub Actions
-#### 1A: Lambda/SAM Implementasjon
-- **HTTP Endepunkt:** `https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate`
-- **S3 Bucket Path:** `s3://pgr301-couch-explorers/50/generated_images/`
-- **SAM Template:** [template.yaml](sam_lambda/image-generator-lambda/template.yaml)
+### GitHub Actions Workflow (1B)
+- SAM Deploy: [Workflow Run](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11843710491)
 
-Test med Postman:
-```
-POST https://m952l2as4d.execute-api.eu-west-1.amazonaws.com/Prod/generate
-Content-Type: application/json
+## Oppgave 2
+### Terraform/SQS
+- SQS URL: `https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50`
+- Main Branch Deploy: [Terraform Apply](link-to-main-deploy)
+- Feature Branch: [Terraform Plan](link-to-feature-plan)
 
-{
-    "prompt": "Norwegian mountain landscape with sunset"
-}
-```
-#### 1B: GitHub Actions for SAM
-- **Workflow Status:** (https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11843710491)
+## Oppgave 3
+### Docker
+- Image: `sanderdrange/image-generator-client`
+- Workflow: [Docker Publish](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11936539593)
+- Tag Strategi: Bruker `latest` tag for nyeste versjon og Git SHA for spesifikke versjoner. Dette gjør det enkelt for teamet å hente siste versjon, samtidig som vi kan rulle tilbake til spesifikke commits ved behov. Kombinasjonen av tags gir både fleksibilitet i daglig bruk og presis versjonskontroll for feilsøking.
 
-### Oppgave 2 - Terraform og SQS
-#### 2A: Infrastruktur som Kode
-- **lambda_function_name:** "image-processor-50"
-- **sqs_queue_url:**  "https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50"
-
-#### 2B: Terraform GitHub Actions
-- **Main Branch Deploy:** [Terraform Apply Workflow](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11913624026)
-- **Feature Branch Plan:** [Terraform Plan Workflow](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11914390470)
-
-#### 3A: Docker-image for Java SQS-klient
-
-- **Container Image**: `sanderdrange/image-generator-client`
-- **SQS URL**: "https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50"
-
-For å kjøre containeren og sende en melding til SQS-køen, bruk følgende kommando:
-
-```
-docker run -e AWS_ACCESS_KEY_ID=AKIATR3Y72NI2GBZ3TUX \
->   -e AWS_SECRET_ACCESS_KEY=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 \
->   -e SQS_QUEUE_URL=https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50 \
->   image-generator-client "Me on top of K2"
-```
-
-Validering ble gjort ved å kjøre containeren og sende meldinger til SQS-køen. Jeg observerte CloudWatch-metrikker for å bekrefte at meldinger ble sendt, mottatt og slettet som forventet. I tillegg ble generert innhold lagret i S3, noe som bekrefter at prosessen fra melding til output fungerte som tiltenkt.
-
-#### 3B: GitHub Actions for Docker Image Publisering
-- **Workflow-fil:** [docker_publish.yml] lenke til action: https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11936539593
-- **Beskrivelse av Taggestrategi:** 
-  - Jeg har valgt å tagge Docker imaget med `latest` for den nyeste stabile versjonen, samt en Git SHA tag for å kunne referere til spesifikke commits. Dette gir en enkel måte å alltid hente den nyeste versjonen, samtidig som man kan spore og rulle tilbake til tidligere versjoner om nødvendig.
-
-GitHub Actions workflowen bygger og publiserer Docker-imaget til Docker Hub hver gang det er en push til main-branchen. Dette sikrer at teamet alltid har tilgang til den nyeste versjonen av klienten.
-
-#### 4A: CloudWatch Alarmer
-- **SQS Queue Alarm:** Implementert CloudWatch alarm for ApproximateAgeOfOldestMessage
-- **Konfigurasjon:** 
-  - Terskel: 1 minutt
-  - Evaluering: Hvert minutt
-  - Alarm Action: SNS Topic med epost-varsling
-- **Teststatus:** Alarm verifisert og testet
-
-#### 4B: Metrics for Responstid
-- **Lambda Duration Metrics:** Implementert p95 percentil måling
-- **Histogram Konfigurasjon:**
-  - Måler prosesseringstid for bildegenerering
-  - Terskel: 10 sekunder
-  - Rapporteringsintervall: 60 sekunder
-- **Teststatus:** Metrics verifisert med test-meldinger
-
-## Teknisk Implementasjon
-- Python 3.8 runtime
-- AWS Bedrock Titan AI for bildegenerering
-- SQS for asynkron meldingshåndtering
-- Terraform for infrastruktur
-- GitHub Actions for CI/CD
-- Terraform-basert infrastruktur for alarmer og metrics
-- SNS Topic for varsling: `sqs-message-age-alarm-topic-50`
-- CloudWatch Dashboard tilgjengelig for visualisering
+## Oppgave 4
+### CloudWatch Alarmer
+- ApproximateAgeOfOldestMessage alarm implementert
+- Lambda Duration p95 percentil måling konfigurert
+- Varsling: Endre `alarm_email` i variables.tf for notifikasjoner
 
 #### 5 Serverless vs. Mikrotjenester fra DevOps Perspektiv
 
