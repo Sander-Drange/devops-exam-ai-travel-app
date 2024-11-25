@@ -20,6 +20,12 @@ Kandidatnummer: 50
 - Image: `sanderdrange/image-generator-client`
 - Workflow: [Docker Publish](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11936539593)
 - Tag Strategi: Bruker `latest` tag for nyeste versjon og Git SHA for spesifikke versjoner. Dette gjør det enkelt for teamet å hente siste versjon, samtidig som vi kan rulle tilbake til spesifikke commits ved behov. Kombinasjonen av tags gir både fleksibilitet i daglig bruk og presis versjonskontroll for feilsøking.
+- - Docker Run:
+```bash
+docker run -e AWS_ACCESS_KEY_ID=xxx -e AWS_SECRET_ACCESS_KEY=yyy \
+-e SQS_QUEUE_URL=https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50 \
+sanderdrange/image-generator-client "Me on top of K2"
+```
 
 ## Oppgave 4
 ### CloudWatch Alarmer
