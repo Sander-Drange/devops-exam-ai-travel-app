@@ -1,5 +1,3 @@
-# DevOps Eksamen - AI Travel App 2024
-
 # Leveranseoversikt - DevOps Eksamen 2024
 Kandidatnummer: 50
 
@@ -14,8 +12,8 @@ Kandidatnummer: 50
 ## Oppgave 2
 ### Terraform/SQS
 - SQS URL: `https://sqs.eu-west-1.amazonaws.com/244530008913/image-generation-queue-50`
-- Main Branch Deploy: [Terraform Apply](link-to-main-deploy)
-- Feature Branch: [Terraform Plan](link-to-feature-plan)
+- Main Branch Deploy: [Terraform Apply](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11936335818)
+- Feature Branch: [Terraform Plan](https://github.com/Sander-Drange/devops-exam-ai-travel-app/actions/runs/11914390470)
 
 ## Oppgave 3
 ### Docker
